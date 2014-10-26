@@ -1,4 +1,6 @@
 CheTortilla::Application.routes.draw do
+  resources :dishes
+
   resources :participations
 
   resources :events

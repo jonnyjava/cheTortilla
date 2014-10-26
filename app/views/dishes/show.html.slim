@@ -1,0 +1,26 @@
+.page-header
+  = link_to dishes_path, :class => 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_dish_path(@dish), :class => 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show dish
+dl.dl-horizontal
+  dt
+    | User:
+  dd
+    = @dish.user
+  dt
+    | Event:
+  dd
+    = @dish.event
+  dt
+    | Name:
+  dd
+    = @dish.name
+  dt
+    | Description:
+  dd
+    = @dish.description

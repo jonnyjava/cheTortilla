@@ -1,0 +1,39 @@
+.page-header
+  = link_to new_dish_path, :class => 'btn btn-primary' do 
+    span.glyphicon.glyphicon-plus
+    |  New Dish
+  h1
+    | Listing dishes
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | User
+        th
+          | Event
+        th
+          | Name
+        th
+          | Description
+        th
+        th
+        th
+    tbody
+      - @dishes.each do | dish |
+        tr
+          td
+            = dish.user
+          td
+            = dish.event
+          td
+            = dish.name
+          td
+            = dish.description
+          td
+            = link_to 'Show', dish
+          td
+            = link_to 'Edit', edit_dish_path(dish) 
+          td
+            = link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } 
