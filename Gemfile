@@ -5,16 +5,17 @@ gem 'sqlite3'
 
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.0.1'
 
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'shoulda-matchers'
 end
 
-gem 'slim', '~> 2.1.0'
+gem 'bootstrap-generators', '~> 3.2.0'
+gem 'slim-rails'
+gem 'sass-rails'
