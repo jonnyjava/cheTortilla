@@ -1,4 +1,6 @@
 CheTortilla::Application.routes.draw do
+  resources :participations
+
   resources :events
 
   resources :users

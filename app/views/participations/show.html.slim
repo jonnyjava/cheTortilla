@@ -1,0 +1,22 @@
+.page-header
+  = link_to participations_path, :class => 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_participation_path(@participation), :class => 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show participation
+dl.dl-horizontal
+  dt
+    | User:
+  dd
+    = @participation.user
+  dt
+    | Event:
+  dd
+    = @participation.event
+  dt
+    | Status:
+  dd
+    = @participation.status
