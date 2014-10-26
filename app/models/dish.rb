@@ -1,4 +1,4 @@
 class Dish < ActiveRecord::Base
-  belongs_to :user, class_name: "chef", foreign_key: "user_id"
+  belongs_to :chef, -> { where status: :chef }, foreign_key: "user_id", class_name: 'User'
   belongs_to :event
 end
