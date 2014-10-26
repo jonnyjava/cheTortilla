@@ -118,7 +118,7 @@ GEM
       activesupport (>= 3.0, < 4.2)
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
-    sprockets (2.12.2)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -157,6 +157,7 @@ DEPENDENCIES
   sass-rails
   shoulda-matchers
   slim-rails
+  sprockets (= 2.11.0)
   sqlite3
   turbolinks
   uglifier (>= 1.0.3)
