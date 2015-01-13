@@ -20,21 +20,15 @@ html
           button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
             span.sr-only
               | Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          = link_to "Project name", "#", :class => "navbar-brand"
         .collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
-              a href="#"
-                | Home
-            li
-              a href="#about" 
-                | About
-            li
-              a href="#contact"
-                | Contact
+            li class=("active" if current_page?(users_path))
+              = link_to 'users', users_path
+            li class=("active" if current_page?(events_path))
+              = link_to 'events', events_path
+            li class=("active" if current_page?(dishes_path))
+              = link_to 'dishes', dishes_path
+            
     .container
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
