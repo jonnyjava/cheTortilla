@@ -1,4 +1,5 @@
 CheTortilla::Application.routes.draw do
+  devise_for :users
   resources :dishes
 
   resources :participations

@@ -7,6 +7,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'sprockets', '=2.11.0'
 
+gem 'devise'
+
 group :assets do
   gem 'uglifier', '>= 1.0.3'
 end

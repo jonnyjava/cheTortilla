@@ -14,25 +14,32 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    .navbar.navbar-inverse.navbar-fixed-top
-      .container
-        .navbar-header
-          button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
-            span.sr-only
-              | Toggle navigation
-        .collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li class=("active" if current_page?(users_path))
-              = link_to 'users', users_path
-            li class=("active" if current_page?(events_path))
-              = link_to 'events', events_path
-            li class=("active" if current_page?(dishes_path))
-              = link_to 'dishes', dishes_path
-            
-    .container
-      - flash.each do |name, msg|
-        = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
-          button.close type="button" data-dismiss="alert" aria-hidden="true"
-            | &times;
-          = msg
+    - if current_user
+      .navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .navbar-header
+            button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
+              span.sr-only
+                | Toggle navigation
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li class=("active" if current_page?(users_path))
+                = link_to 'users', users_path
+              li class=("active" if current_page?(events_path))
+                = link_to 'events', events_path
+              li class=("active" if current_page?(dishes_path))
+                = link_to 'dishes', dishes_path
+              li 
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+
       = yield
+    - else 
+      'logueate pirla!            
+      .container
+        - flash.each do |name, msg|
+          = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
+            button.close type="button" data-dismiss="alert" aria-hidden="true"
+              | &times;
+            = msg
+    
+
