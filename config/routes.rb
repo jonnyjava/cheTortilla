@@ -8,5 +8,5 @@ CheTortilla::Application.routes.draw do
 
   resources :users
 
-  root to: 'users#index'
+  root to: 'home#index'
 end

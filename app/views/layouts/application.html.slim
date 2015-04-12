@@ -14,7 +14,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    - if current_user
+    - if user_signed_in?
       .navbar.navbar-inverse.navbar-fixed-top
         .container
           .navbar-header
@@ -29,17 +29,23 @@ html
                 = link_to 'events', events_path
               li class=("active" if current_page?(dishes_path))
                 = link_to 'dishes', dishes_path
-              li 
+              li
                 = link_to "Sign out", destroy_user_session_path, method: :delete
-
-      = yield
-    - else 
-      'logueate pirla!            
+    - else
       .container
-        - flash.each do |name, msg|
-          = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
-            button.close type="button" data-dismiss="alert" aria-hidden="true"
-              | &times;
-            = msg
-    
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            - unless current_page?(root_path)
+              li = link_to "Home", root_path
+            - unless current_page?(new_user_session_path)
+              li= link_to "Login", new_user_session_path
+            - unless current_page?(new_user_registration_path)
+              li= link_to "Sign up", new_user_registration_path
+        .container
+          - flash.each do |name, msg|
+            = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
+              button.close type="button" data-dismiss="alert" aria-hidden="true"
+                | &times;
+              = msg
 
+  = yield
