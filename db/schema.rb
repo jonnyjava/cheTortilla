@@ -58,11 +58,4 @@ ActiveRecord::Schema.define(version: 20150221213721) do
     t.string   "last_sign_in_ip"
   end
 
-  create_table "votes", force: true do |t|
-    t.integer  "value"
-    t.integer  "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
