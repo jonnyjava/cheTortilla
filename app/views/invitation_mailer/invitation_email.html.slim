@@ -1,0 +1,4 @@
+p You have received an invitation to participate to a chetortilla event
+p The event is scheduled #{@invitation.event.scheduled}
+= link_to t('Oh yes!'), token_verification_url(@invitation.verification_token)
+= link_to t('no thanks!'), token_verification_url(@invitation.verification_token)

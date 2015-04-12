@@ -19,6 +19,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers'
   gem 'faker'
+  gem 'email_spec'
 end
 
 group :development do

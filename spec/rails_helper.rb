@@ -10,6 +10,8 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::TestHelpers, type: :controller
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 
   config.extend ControllerMacros, type: :controller
   config.extend RequestMacros, type: :request
