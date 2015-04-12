@@ -8,6 +8,7 @@ gem 'turbolinks'
 gem 'sprockets', '=2.11.0'
 
 gem 'devise'
+gem 'simple_form'
 
 group :assets do
   gem 'uglifier', '>= 1.0.3'
