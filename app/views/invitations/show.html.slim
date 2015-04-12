@@ -1,0 +1,18 @@
+.page-header
+  = link_to invitations_path, :class => 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_invitation_path(@invitation), :class => 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show invitation
+dl.dl-horizontal
+  dt
+    | Email:
+  dd
+    = @invitation.email
+  dt
+    | Event:
+  dd
+    = @invitation.event

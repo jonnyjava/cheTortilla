@@ -1,0 +1,28 @@
+.page-header
+  = link_to new_event_invitation_path(@event), :class => 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    |  New Invitation
+  h1
+    | Listing invitations
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Email
+        th
+          | Event
+        th
+        th
+    tbody
+      - @invitations.each do | invitation |
+        tr
+          td
+            = invitation.email
+          td
+            = invitation.event
+          td
+            = link_to 'Show', event_invitation_path(@event, invitation)
+          td
+            = link_to 'Destroy', event_invitation_path(@event, invitation), method: :delete, data: { confirm: 'Are you sure?' }

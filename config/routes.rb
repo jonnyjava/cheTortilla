@@ -1,10 +1,13 @@
 CheTortilla::Application.routes.draw do
+
   devise_for :users
   resources :dishes
 
   resources :participations
 
-  resources :events
+  resources :events do
+    resources :invitations, except:[:edit, :update]
+  end
 
   resources :users
 

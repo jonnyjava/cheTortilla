@@ -1,0 +1,7 @@
+.page-header
+  = link_to event_invitations_path(@event), :class => 'btn btn-default' do
+    span.glyphicon.glyphicon-list-alt
+    |  Back
+  h1 New invitation
+
+= render 'form'

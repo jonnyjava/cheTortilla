@@ -1,0 +1,8 @@
+= simple_form_for([@event, @invitation]) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :email
+    = f.input :event_id, value: @event.id, as: :hidden
+  .actions
+    = f.button :submit
