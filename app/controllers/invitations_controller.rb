@@ -1,9 +1,13 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:show, :destroy]
-  before_action :set_event
+  before_action :set_event, except: :user_invitation
 
   def index
     @invitations = Invitation.by_event(@event)
+  end
+
+  def user_invitations
+    @invitations = Invitation.by_email(current_user.email)
   end
 
   def show

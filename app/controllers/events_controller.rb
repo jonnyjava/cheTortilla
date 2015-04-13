@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events_created_by_current_user = Event.by_creator(current_user)
-    @events_with_current_user_invited = Event.where_user_is_invited(current_user)
+    @events_with_current_user_participating = Event.by_participation(current_user)
   end
 
   def show

@@ -27,6 +27,8 @@ html
                 = link_to 'users', users_path
               li class=("active" if current_page?(events_path))
                 = link_to 'events', events_path
+              li class=("active" if current_page?(user_invitations_path(current_user)))
+                = link_to 'pending invitations', user_invitations_path(current_user)
               li class=("active" if current_page?(dishes_path))
                 = link_to 'dishes', dishes_path
               li

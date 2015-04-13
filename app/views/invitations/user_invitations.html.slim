@@ -1,0 +1,21 @@
+.page-header
+  h1
+    | Listing my invitations
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Event
+        th
+        th
+    tbody
+      - @invitations.each do | invitation |
+        tr
+          td
+            = invitation.event
+          td
+            = link_to 'Show', event_invitation_path(invitation.event, invitation)
+          td
+            = link_to 'Destroy', event_invitation_path(invitation.event, invitation), method: :delete, data: { confirm: 'Are you sure?' }

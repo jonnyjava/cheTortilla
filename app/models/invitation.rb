@@ -4,6 +4,7 @@ class Invitation < ActiveRecord::Base
   after_create :notify_invited
 
   scope :by_event, ->(event) { where(event: event) }
+  scope :by_email, ->(email) { where(email: email) }
 
   def notify_invited
     InvitationMailer.invitation_email(self).deliver

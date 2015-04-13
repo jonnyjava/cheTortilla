@@ -27,25 +27,17 @@
           td
             = link_to 'pending invitations', event_invitations_path(event)
 
-  h3 I'm invited to
+  h3 I'm joining to
 .table-responsive
   table.table.table-striped.table-bordered.table-hover
     thead
       tr
-        th
-          | Scheduled
-        th
-        th
-        th
+        th Scheduled
         th
     tbody
-      - @events_with_current_user_invited.each do | event |
+      - @events_with_current_user_participating.each do | event |
         tr
           td
             = event.scheduled
           td
             = link_to 'Show', event
-          td
-            = link_to 'Edit', edit_event_path(event)
-          td
-            = link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
