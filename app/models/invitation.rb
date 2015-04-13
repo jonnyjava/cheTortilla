@@ -15,6 +15,15 @@ class Invitation < ActiveRecord::Base
     Digest::SHA1.hexdigest(token)
   end
 
+  def get_user_from_email_if_exists
+    User.find_by_email(email)
+  end
+
+  def approve_participation(user)
+    user.accept_participation(event)
+    self.destroy
+  end
+
   def self.find_by_token(token)
     invitation = nil
     Invitation.all.each do |i|
@@ -24,4 +33,5 @@ class Invitation < ActiveRecord::Base
     end
     invitation
   end
+
 end

@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:show, :destroy]
-  before_action :set_event, except: :user_invitation
+  before_action :set_event, except: [:user_invitation]
 
   def index
     @invitations = Invitation.by_event(@event)
@@ -31,9 +31,14 @@ class InvitationsController < ApplicationController
     redirect_to @event, notice: 'Invitation was successfully destroyed.'
   end
 
-  def accept_invitation
-    if @invitation = Invitation.find_by_token(params[:token])
-      raise @invitation
+  def accepted
+    if invitation = Invitation.find_by_token(params[:token])
+      if (user = invitation.get_user_from_email_if_exists)
+        invitation.approve_participation(user)
+        redirect_to event_path(invitation.event)
+      else
+        redirect_to new_user_registration_path
+      end
     else
       #redirect_to error_404_path
       redirect_to root_path
@@ -48,7 +53,6 @@ class InvitationsController < ApplicationController
       redirect_to root_path
     end
   end
-
 
   private
     def set_invitation

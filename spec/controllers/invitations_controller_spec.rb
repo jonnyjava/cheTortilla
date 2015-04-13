@@ -67,6 +67,36 @@ RSpec.describe InvitationsController, :type => :controller do
     end
   end
 
+  describe "POST accept" do
+    context "with valid token" do
+      context "with an existing user" do
+        it "should redirect to the associated event" do
+          user = FactoryGirl.create(:user)
+          invitation = FactoryGirl.create(:invitation, email: user.email)
+          post :accepted, { token: invitation.verification_token }, valid_session
+          expect(response).to redirect_to(event_path(invitation.event))
+        end
+      end
+
+      context "without an existing user" do
+        it "should redirect to the registration page" do
+          invitation = FactoryGirl.create(:invitation)
+          post :accepted, { token: invitation.verification_token }, valid_session
+          expect(response).to redirect_to(new_user_registration_path)
+        end
+      end
+    end
+
+    context "with an invalid token" do
+      it "should redirect to the home page" do
+        invitation = FactoryGirl.create(:invitation)
+        post :accepted, { token: 666 }, valid_session
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
+
   describe "DELETE destroy" do
     it "destroys the requested invitation" do
       invitation

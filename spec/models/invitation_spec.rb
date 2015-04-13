@@ -43,4 +43,16 @@ describe Invitation do
       expect(result).not_to eq(invitation2)
     end
   end
+
+  describe 'approve_participation' do
+    it "should delete the invitation and create a participation" do
+      participations_size = Participation.all.size
+      user = FactoryGirl.create(:user)
+      invitation = FactoryGirl.create(:invitation, email: user.email)
+      invitation.approve_participation(user)
+      expect(Invitation.find_by_id(invitation.id)).to be_nil
+      expect(Participation.all.size).to be_equal(participations_size+1)
+      expect(Participation.where(event: invitation.event, user: user).size).to be_equal(1)
+    end
+  end
 end

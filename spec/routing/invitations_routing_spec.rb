@@ -23,12 +23,12 @@ RSpec.describe InvitationsController, type: :routing do
       expect(delete: "/events/1/invitations/1").to route_to("invitations#destroy", id: "1", event_id: "1")
     end
 
-    it "should route to #accept_invitation" do
-      expect(get: "invitations/accept_invitation/1").to route_to("invitations#accept_invitation", token: "1")
+    it "should route to #accepted" do
+      expect(post: "invitations/accepted/1").to route_to("invitations#accepted", token: "1")
     end
 
     it "should route to #reject_invitation" do
-      expect(get: "invitations/reject_invitation/1").to route_to("invitations#reject_invitation", token: "1")
+      expect(post: "invitations/reject_invitation/1").to route_to("invitations#reject_invitation", token: "1")
     end
   end
 end

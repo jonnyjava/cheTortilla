@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def status
     participation.status
   end
+
+  def accept_participation(event)
+    Participation.create(event: event, user: self, status: Participation::CHEF)
+  end
 end
