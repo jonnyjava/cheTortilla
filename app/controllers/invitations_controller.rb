@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
   before_action :set_event
 
   def index
-    @invitations = Invitation.all
+    @invitations = Invitation.by_event(@event)
   end
 
   def show

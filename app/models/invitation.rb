@@ -3,6 +3,8 @@ class Invitation < ActiveRecord::Base
   validates :email, presence: true, uniqueness: {scope: :event_id}
   after_create :notify_invited
 
+  scope :by_event, ->(event) { where(event: event) }
+
   def notify_invited
     InvitationMailer.invitation_email(self).deliver
   end
