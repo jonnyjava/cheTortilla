@@ -31,7 +31,7 @@ class InvitationsController < ApplicationController
     redirect_to @event, notice: 'Invitation was successfully destroyed.'
   end
 
-  def token_verification
+  def accept_invitation
     if @invitation = Invitation.find_by_token(params[:token])
       raise @invitation
     else
@@ -39,6 +39,16 @@ class InvitationsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def reject_invitation
+    if @invitation = Invitation.find_by_token(params[:token])
+      raise @invitation
+    else
+      #redirect_to error_404_path
+      redirect_to root_path
+    end
+  end
+
 
   private
     def set_invitation

@@ -11,6 +11,7 @@ CheTortilla::Application.routes.draw do
 
   root to: 'home#index'
 
-  get 'invitations/token_verification/:token', to: 'invitations#token_verification', as: 'token_verification'
+  get 'invitations/accept_invitation/:token', to: 'invitations#accept_invitation', as: 'accept_invitation'
+  get 'invitations/reject_invitation/:token', to: 'invitations#reject_invitation', as: 'reject_invitation'
   get 'invitations/user_invitations/:user', to: 'invitations#user_invitations', as: 'user_invitations'
 end
